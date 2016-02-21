@@ -22,7 +22,7 @@ public class Stock {
   //custom varibles
   public int quanityOwned;
   public double currentPrice;
-
+  public double purchasedPrice;
 
 
   public Stock(String symbol, double price, int volume, double pe, double eps, double week52low,
@@ -44,6 +44,15 @@ public class Stock {
     this.previousClose = previousClose;
     this.open = open;
     this.exchange = exchange;
+  }
+
+  //joes custom constructor
+  public Stock(String symbol, int quanity, double purchasedPrice, double CurrentPrice )
+  {
+    this.symbol = symbol;
+    this.quanityOwned = quanity;
+    this.purchasedPrice = purchasedPrice;
+    this.currentPrice = CurrentPrice;
   }
 
   public String getExchange(){

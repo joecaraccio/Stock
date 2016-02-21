@@ -2,6 +2,8 @@ import StockMarket.StockTest;
 import indy.portfolio;
 
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Joe on 2/19/2016.
@@ -30,9 +32,18 @@ public class main {
                 System.out.println("buy STOCK_NAME QUANITY");
                 System.out.println("portfolio value");
                 System.out.println("list Stocks");
+                System.out.println("save --save stocks to csv");
+                System.out.println("list Stocks");
                 System.out.println(" ");
                 System.out.println(" ");
             }
+            //save
+            if(input.equals("save"))
+            {
+                System.out.println("Saving File....");
+                p1.saveCSV();
+            }
+
             //print portfoliol value
             if(input.equals("portfolio value"))
             {
@@ -42,7 +53,7 @@ public class main {
 
             if(input.equals("list Stocks"))
             {
-
+                p1.listStocks();
             }
 
             //buying Stock
@@ -54,7 +65,24 @@ public class main {
                 String[] arr = input.split(" ");
                 int quan = Integer.parseInt( arr[2] );
                 p1.buyStock(arr[1].toString(), quan );
+                p1.saveCSV();
+
             }
+
+
+
+            //timer functions
+            Timer timer = new Timer();
+            TimerTask hourlyTask = new TimerTask() {
+                @Override
+                public void run () {
+                    System.out.println("Running Stock Retriever Task");
+                    // your code here...
+                }
+            };
+
+            // schedule the task to run starting now and then every hour...
+            timer.schedule (hourlyTask, 0l, 1000*60*60);
 
 
         }//dont put any realtime stuff below this
