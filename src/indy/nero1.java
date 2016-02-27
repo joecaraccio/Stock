@@ -151,7 +151,8 @@ public class nero1 {
             Double[] output = new Double[]{
                     tempList.get( 4 + ( testCount * 5 ) ).stockPrice
             };
-            //trainingSet.addElement(new SupervisedTrainingElement(input,output );
+            //
+            // trainingSet.addElement(new SupervisedTrainingElement(input,output );
 
             testCount++;
         }

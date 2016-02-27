@@ -13,6 +13,15 @@ public class StockWorplace {
     public String name;
     public double stockOpen;
 
+    public double daylow;
+    public double dayhigh;
+    public double yearlow;
+    public double yearhigh;
+
+
+
+
+
     public StockWorplace() {
         stockName = null;
         stockPrice = 0.0;

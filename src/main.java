@@ -4,6 +4,7 @@ import StockMarket.StockTest;
 import indy.StockWorplace;
 import indy.nero1;
 import indy.portfolio;
+import indy.shuttle;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -74,8 +75,8 @@ public class main {
             public void run() {
                 //will not run unless market is open
                 //marketOpen = true;
-                if( marketOpen == true ) {
-                    System.out.println("LETS GO");
+                //if( marketOpen == true ) {
+                    //System.out.println("LETS GO");
                     // Function runs every MINUTES minutes.
                     // Run the code you want here
                     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
@@ -98,14 +99,19 @@ public class main {
                         t1.stockPrice = price;
                         t1.stockOpen = st1.getOpen();
                         t1.timeStamp = timeStamp;
+                        t1.daylow = st1.getDaylow();
+                        t1.dayhigh = st1.getDayhigh();
+                        t1.yearhigh = st1.getWeek52high();
+                        t1.yearlow = st1.getWeek52low();
                         stockList.add(t1);
 
 
-                    }
+                   // }
 
                 }
+                shuttle.saveList( stockList );
             }
-        }, 0, 60000 );
+        }, 0, 5000 );
         //1 minute = 60000
         //1000 * 60 * MINUTES
         // 1000 milliseconds in a second * 60 per minute * the MINUTES variable.
@@ -142,6 +148,15 @@ public class main {
                 n1.test1("FB");
             }
 
+
+            //newer functions
+            if( input.equals("ssss")){
+                shuttle.saveList( stockList );
+            }
+            if( input.equals("runTest1"))
+            {
+                shuttle.runTests();
+            }
 
 
 
